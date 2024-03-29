@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to InspireSphere</title>
+  <link rel="stylesheet" href="welcome.css">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Show loading bar initially
+      var loadingBar = document.querySelector('.loading-bar');
+      loadingBar.style.display = 'block';
+
+      // Hide loading bar after a delay
+      setTimeout(function() {
+        loadingBar.style.display = 'none';
+        // Show welcome menu after loading bar disappears
+        var welcomeContainer = document.querySelector('.welcome-container');
+        welcomeContainer.style.display = 'block';
+      }, 3000); // Adjust the delay duration as needed
+    });
+  </script>
+</head>
+<body>
+  <div class="loading-bar"></div>
+  <div class="welcome-container" style="display: none;">
+    <h1 class="welcome-message">Welcome to <span class="gradient-text">InspireSphere</span></h1>
+    <div class="buttons-container">
+      <button onclick="window.location.href = '/register';">Înregistrare</button>
+      <button onclick="window.location.href = '/login';">Autentificare</button>
+    </div>
+  </div>
+</body>
+</html>
+
