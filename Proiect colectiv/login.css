@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("assets/bg_imagine_proba.jpg");
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+
+body::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the pseudo-element stays behind the content */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: dashed ;
+    border-width: 10px;
+    border-color: #F15E74;
+    border-radius: 20px;
+    background-color: black;
+    padding: 20px;
+    margin: 20px;
+}
+
+.form-message {
+    font-family: 'Lobster', sans-serif;;
+    font-size: 100px;
+    padding-top: 20px;
+    margin-bottom: 10px; 
+    opacity: 1;
+    text-align: center; 
+    color: #F15E74;
+    text-shadow: 150px 150px 150px linear-gradient(90deg, #CCD7B7, #F39E75, #F15E74); /* Apply gradient as text shadow */
+    padding: 20px;
+    margin: 20px;
+}
+
+input[type="email"] {
+    width: 400px; /* Set the width of the input fields */
+    height: 50px; /* Set the height of the input fields */
+    font-size: 24px; /* Set the font size of the input fields */
+    margin-bottom: 10px; /* Add some spacing between input fields */
+}
+
+input[type="password"] {
+    width: 400px; /* Set the width of the input fields */
+    height: 50px; /* Set the height of the input fields */
+    font-size: 24px; /* Set the font size of the input fields */
+    margin-bottom: 10px; /* Add some spacing between input fields */
+}
+input[type="email"]:focus {
+    box-shadow: 0 0 100px #F39E75;
+}
+
+input[type="password"]:focus {
+    box-shadow: 0 0 100px #CCD7B7;
+}
+
+.signup-button {
+    width: auto; /* Allow the button to adjust its width based on the content */
+    height: 60px; /* Set the height of the button */
+    font-size: 20px; /* Adjust font size */
+    background-color: white; /* Set initial background color to white */
+    padding: 10px 20px; /* Add padding to the button */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.5s ease-in-out; /* Apply transition effect to background-color */
+    border-radius: 30px; /* Make the button rounder */
+}
+
+
+
+/* Define the hover effect for the sign-up button */
+.signup-button:hover {
+    background-image: linear-gradient(90deg, #CCD7B7, #F39E75, #F15E74); /* Change gradient background on hover */
+    background-color: transparent; /* Set background color to transparent on hover */
+}
+
+@font-face {
+    font-family: 'Lobster';
+    src: url('assets/Lobster-Regular.ttf') format('truetype');
+}
