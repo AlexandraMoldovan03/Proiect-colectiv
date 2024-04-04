@@ -89,7 +89,7 @@ function login($data)
 		$arr['email'] = $data['email'];
 		$password = hash('sha256', $data['password']);
 
-		$query = "select * from user where email = :email limit 1";
+		$query = "select * from users where email = :email limit 1";
 
 		$row = database_run($query,$arr);
 
@@ -100,6 +100,7 @@ function login($data)
 				
 				$_SESSION['USER'] = $row;
 				$_SESSION['LOGGED_IN'] = true;
+				header("Location: profile.php");
 			}else{
 				$errors[] = "wrong email or password";
 			}
@@ -160,7 +161,7 @@ function check_verified(){
 	if(is_array($row)){
 		$row = $row[0];
 
-		if($row->email == $row->email_verified){
+		if($row->email == $row->email_verificated){
 
 			return true;
 		}
@@ -177,7 +178,7 @@ function check_verified(){
 
 function addNews($title, $content) {
     try {
-        $string = "mysql:host=localhost;dbname=tennis";
+        $string = "mysql:host=localhost;dbname=inspiresphere";
         $con = new PDO($string, 'root', '');
 
         if (!$con) {

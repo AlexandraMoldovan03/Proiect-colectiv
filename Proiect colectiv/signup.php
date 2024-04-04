@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 	if(count($errors) == 0)
 	{
-		header("Location: login1.php");
+		header("Location: login.php");
 		die;
 	}
 }
