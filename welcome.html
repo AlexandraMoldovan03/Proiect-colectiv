@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to InspireSphere</title>
+  <link rel="stylesheet" href="welcome.css">
+  <style>
+    @font-face {
+      font-family: 'Lobster';
+      src: url('assets/Lobster-Regular.ttf') format('truetype');
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Show loading bar initially
+      var loadingBar = document.querySelector('.loading-bar');
+      loadingBar.style.display = 'block';
+
+      // Hide loading bar after a delay
+      setTimeout(function() {
+        loadingBar.style.display = 'none';
+        // Show welcome menu after loading bar disappears
+        var welcomeContainer = document.querySelector('.welcome-container');
+        welcomeContainer.style.display = 'block';
+      }, 3000); // Adjust the delay duration as needed
+    });
+  </script>
+</head>
+<body>
+  <div class="loading-bar"></div>
+  <div class="welcome-container" style="display: none;">
+    <h1 class="welcome-message"><span class="gradient-text">InspireSphere</span></h1>
+    <h2 class="motto-message">Be creative, share and Inspire! </h2>
+    <div class="buttons-container">
+      <button onclick="window.location.href = 'signup.php';">Înregistrare</button>
+      <button onclick="window.location.href = 'login.php';">Autentificare</button>
+    </div>
+  </div>
+</body>
+</html>
