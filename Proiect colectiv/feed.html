@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InspireSphere</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/unicons.css">
     <link rel="stylesheet" href="./feed.css">
 </head>
 <body>
@@ -13,6 +14,7 @@
                 InspireSphere
             </h2>
             <div class="search-bar">
+                <!--<i class="search"></i>-->
                 <input type="search" placeholder="Search anything of interest">
             </div>
             <div class="create">
@@ -23,5 +25,223 @@
             </div>
         </div>
     </nav>
+
+    <main>
+        <div class="container">
+            <div class="left">
+                <a class="profile">
+                    <div class="profile-photo">
+                        <img src="./assets/profile1.png">
+                    </div>
+                    <div class="handle">
+                        <h4>OanaBN</h4>
+                        <p class="text-muted">
+                            @yippie
+                        </p>
+                    </div>
+                </a>
+
+                <div class="sidebar">
+                    <a class="menu-item active">
+                        <span><!--<iconite!!! i class="search"></i>--></span><h3>Home</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><!--<iconite!!! i class="search"></i>--></span><h3>Profile</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><!--<iconite!!! i class="search"></i>--></span><h3>Messages</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><!--<iconite!!! i class="search"></i>--></span><h3>Explore</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><!--<iconite!!! i class="search"></i>--></span><h3>Theme</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><!--<iconite!!! i class="search"></i>--></span><h3>Settings</h3>
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="middle">
+                <!--<div class="stories">
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./assets/pro1.jpg">
+                        </div>
+                        <p class="name">Akali_K/DA</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./assets/pro2.png">
+                        </div>
+                        <p class="name">KaiDA</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./assets/pro3.png">
+                        </div>
+                        <p class="name">EveXoXo</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./assets/pro4.jpg">
+                        </div>
+                        <p class="name">Sera</p>
+                    </div>
+                </div>-->
+                <form class="create-post">
+                    <div class="profile-photo">
+                        <img src="./assets/profile1.png">
+                    </div>
+                    <input type="text" placeholder="Anything to share with us?">
+                    <input type="submit" value="Post" class="btn btn-primary">
+                </form>
+                
+                <div class="feeds">
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./assets/pro1.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Akali_K/DA</h3>
+                                    <small class="hash-tag">#music #photography</small>
+                                </div>
+                            </div>
+                        </div>        
+                                <div class="photo">
+                                    <img src="./assets/Akali_1.jpg">
+                                </div>
+                                <div class="action-button">
+                                    <div class="interaction-buttons">
+                                        <span><i class="uil uil-heart"></i></span>
+                                        <span><i class="uil uil-comment-dots"></i></span>
+                                        <span><i class="uil uil-share-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="liked-by">
+                                    <span><img src="./assets/pro2.png"></span>
+                                    <span><img src="./assets/pro3.png"></span>
+                                    <span><img src="./assets/pro4.jpg"></span>
+                                    <p>Liked by <b>Kai/DA</b> and <b>145 others</b></p>
+                                </div>
+
+                                <div class="caption">
+                                    <p><b>Akali_K/DA:</b> POSTARE postare postare...</p>
+                                </div>
+                                <div class="comments text-muted" View all 89 comments></div>
+                    </div>
+                
+                <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./assets/pro2.png">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Kai/DA</h3>
+                                    <small class="hash-tag">#food</small>
+                                </div>
+                            </div>
+                        </div>        
+                                <div class="photo">
+                                    <img src="./assets/food.jpg">
+                                </div>
+                                <div class="action-button">
+                                    <div class="interaction-buttons">
+                                        <span><i class="uil uil-heart"></i></span>
+                                        <span><i class="uil uil-comment-dots"></i></span>
+                                        <span><i class="uil uil-share-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="liked-by">
+                                    <span><img src="./assets/pro1.jpg"></span>
+                                    <span><img src="./assets/pro4.jpg"></span>
+                                    <p>Liked by <b>EveXoXo, Sera</b> and <b>300 others</b></p>
+                                </div>
+
+                                <div class="caption">
+                                    <p><b>Kai/DA:</b> RETETE: 'ahdbahjbdahc'</p>
+                                </div>
+                                <div class="comments text-muted" View all 174 comments></div>
+                    </div>
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./assets/pro4.jpg">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Sera</h3>
+                                    <small class="hash-tag">#photography</small>
+                                </div>
+                            </div>
+                        </div>        
+                                <div class="photo">
+                                    <img src="./assets/photo.jpg">
+                                </div>
+                                <div class="action-button">
+                                    <div class="interaction-buttons">
+                                        <span><i class="uil uil-heart"></i></span>
+                                        <span><i class="uil uil-comment-dots"></i></span>
+                                        <span><i class="uil uil-share-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="liked-by">
+                                    <span><img src="./assets/pro2.png"></span>
+                                    <p>Liked by <b>Kai/DA</b> and <b>120 others</b></p>
+                                </div>
+
+                                <div class="caption">
+                                    <p><b>Sera:</b> First photograph of the month!!</p>
+                                </div>
+                                <div class="comments text-muted" View all 66 comments></div>
+                    </div>
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="./assets/pro3.png">
+                                </div>
+                                <div class="ingo">
+                                    <h3>EveXoXo</h3>
+                                    <small class="hash-tag">#drawing </small>
+                                </div>
+                            </div>
+                        </div>        
+                                <div class="photo">
+                                    <img src="./assets/desen.jpeg">
+                                </div>
+                                <div class="action-button">
+                                    <div class="interaction-buttons">
+                                        <span><i class="uil uil-heart"></i></span>
+                                        <span><i class="uil uil-comment-dots"></i></span>
+                                        <span><i class="uil uil-share-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="liked-by">
+                                    <span><img src="./assets/pro1.jpg"></span>
+                                    <span><img src="./assets/pro2.png"></span>
+                                    <span><img src="./assets/pro4.jpg"></span>
+                                    <p>Liked by <b>Kai/DA, Akali_K/DA, Sera</b> and <b>269 others</b></p>
+                                </div>
+
+                                <div class="caption">
+                                    <p><b>EveXoXo:</b> wow</p>
+                                </div>
+                                <div class="comments text-muted" View all 100 comments></div>
+                        </div>          
+                    </div>
+                </div>
+            </div>
+               
+            <div class="right">
+
+        </div>
+    </main>
+
 </body>
 </html>
