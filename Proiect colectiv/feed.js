@@ -124,3 +124,65 @@ colorPallette.forEach(color => {
         root.style.setProperty('--third-color', thirdColor);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const profileLink = document.getElementById('profileLink');
+    
+    if (profileLink) {
+        profileLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Redirect to profile.html
+            window.location.href = 'profil.html';
+        });
+    }
+});
+
+document.getElementById('createPostBtn').addEventListener('click', function() {
+            document.querySelector('.create-post').style.display = 'block';
+        });
+
+        // Handle form submission to create a new post
+        document.getElementById('postForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the post content from the textarea
+            let postContent = document.getElementById('postContent').value.trim();
+
+            // Check if the post content is not empty
+            if (postContent !== '') {
+                // Create a new post element
+                let newPost = document.createElement('div');
+                newPost.classList.add('feed');
+                newPost.innerHTML = `
+                    <!-- Your post structure here -->
+                    <div class="head">
+                        <!-- Post header content -->
+                    </div>
+                    <div class="photo">
+                        <!-- Post photo content -->
+                    </div>
+                    <div class="action-button">
+                        <!-- Action buttons -->
+                    </div>
+                    <div class="liked-by">
+                        <!-- Liked by content -->
+                    </div>
+                    <div class="caption">
+                        <p><b>Username:</b> ${postContent}</p>
+                    </div>
+                    <div class="comments text-muted">
+                        <!-- Comments content -->
+                    </div>
+                `;
+
+                // Append the new post to the feeds container
+                document.querySelector('.feeds').prepend(newPost);
+
+                // Reset the form and hide the posting form
+                document.getElementById('postContent').value = '';
+                document.querySelector('.create-post').style.display = 'none';
+            } else {
+                alert('Please enter something to post.');
+            }
+        });
