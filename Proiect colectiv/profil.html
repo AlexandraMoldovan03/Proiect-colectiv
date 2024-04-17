@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profil.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>User Profile</h1>
+        </div>
+        <div class="profile">
+            <img src="./assets/profile1.png" alt="Profile Picture">
+            <h2>Username</h2>
+            <p>Email: user@example.com</p>
+            <p>Location: City, Country</p>
+        </div>
+        <div class="edit-profile">
+            <button onclick="editProfile()">Edit Profile</button>
+        </div>
+        <div id="profileForm" style="display: none;">
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location"><br><br>
+                <button type="submit">Save</button>
+                <button type="button" onclick="cancelEdit()">Cancel</button>
+            </form>
+        </div>
+        <h2>Posts</h2>
+        <div class="posts">
+            <div class="post">
+                <img src="post1.jpg" alt="Post 1">
+                <div class="post-content">
+                    <p>Caption for Post 1</p>
+                </div>
+            </div>
+            <div class="post">
+                <img src="post2.jpg" alt="Post 2">
+                <div class="post-content">
+                    <p>Caption for Post 2</p>
+                </div>
+            </div>
+            <!-- Add more posts here -->
+        </div>
+        <div class="add-post">
+            <h2>Add New Post</h2>
+            <input type="text" id="postCaption" placeholder="Enter caption...">
+            <button onclick="addPost()">Add Post</button>
+        </div>
+    </div>
+
+    <script>
+        function editProfile() {
+            document.getElementById('profileForm').style.display = 'block';
+            document.querySelector('.profile').style.display = 'none';
+        }
+
+        function cancelEdit() {
+            document.getElementById('profileForm').style.display = 'none';
+            document.querySelector('.profile').style.display = 'block';
+        }
+
+        function addPost() {
+            var caption = document.getElementById('postCaption').value;
+            if (caption.trim() !== '') {
+                var newPost = document.createElement('div');
+                newPost.classList.add('post');
+                newPost.innerHTML = '<img src="post-placeholder.jpg" alt="New Post"><div class="post-content"><p>' + caption + '</p></div>';
+                document.querySelector('.posts').appendChild(newPost);
+                document.getElementById('postCaption').value = '';
+            }
+        }
+    </script>
+</body>
+</html>

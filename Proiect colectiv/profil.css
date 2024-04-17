@@ -1,0 +1,171 @@
+:root {
+    --main-color: var(--color-gradient);
+    --primary-color: var(--color-orange);
+    --secondary-color: var(--color-pink);
+    --third-color: var(--color-green);
+
+    --color-dark: hsl(252, 30%, 17%);
+    --color-cream: hsl(40, 71%, 96%);
+    --color-green: hsl(81, 70%, 85%);
+    --color-pink: hsl(351, 84%, 66%);
+    --color-orange: hsl(15, 96%, 81%);
+    --color-purple: hsl(246, 100%, 88%);
+    --color-creamy: hsl(0, 100%, 96%);
+    --color-purpler: hsl(241, 69%, 76%);
+    --color-blue: hsl(220, 97%, 70%);
+    --color-darkblue: hsl(242, 58%, 49%);
+    --color-pastel: hsl(41, 75%, 96%);
+    --color-greenw: hsl(141, 36%, 55%);
+    --color-pinkw: hsl(351, 84%, 66%);
+    --color-pinky: hsl(352, 100% , 85%);
+    --color-yellow: hsl(52, 97%, 49%);
+    --color-PINK: hsl(311, 94%, 74%);
+    --color-bleu: hsl(254, 49%, 54%);
+    --color-gradient: linear-gradient(90deg, var(--color-green), var(--color-orange), var(--color-pink));
+    --color-lavander: linear-gradient(90deg, var(--color-purpler), var(--color-purple), var(--color-creamy));
+    --color-beach: linear-gradient(90deg, var(--color-darkblue), var(--color-blue), var(--color-pastel));
+    --color-watermelon: linear-gradient(90deg, var(--color-greenw), var(--color-pinky), var(--color-pinkw));
+    --color-city: linear-gradient(90deg, var(--color-bleu), var(--color-PINK), var(--color-yellow));
+    --border-radius: 2rem;
+    --border-radius: 2rem;
+    --card-border-radius: 1rem;
+    --btn-padding: 0.6rem 2rem;
+    --search-padding: 0.6rem 1rem;
+    --card-padding: 1rem;
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-dark);
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--color-cream);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(var(--secondary-color), 0.1);
+}
+
+.header {
+    background: var(--main-color);
+    color: var(--color-dark);
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid var(--main-color); /* Use --main-color for the border color */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+
+.profile h2,
+.profile p {
+    margin: 0;
+    color: #333;
+}
+
+.edit-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.edit-profile button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.edit-profile button:hover {
+    background: var(--secondary-color);
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.post {
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.post-content p {
+    margin: 0;
+    color: #333;
+}
+
+.add-post {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.add-post input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 100px);
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.add-post button {
+    background: var(--third-color);
+    color: var(--color-dark);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+}
+
+.add-post button:hover {
+    background: var(--secondary-color);
+}
