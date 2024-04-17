@@ -5,6 +5,8 @@ const themeModal = document.querySelector('.customize-theme');
 const fontSizes = document.querySelectorAll('.choose-size span');
 var root = document.querySelector(':root');
 const colorPallette = document.querySelectorAll('.choose-color span')
+const Bg1 = document.querySelector('.bg-1');
+const Bg2 = document.querySelector('.bg-2');
 
 const changeActiveItem = () => {
     menuItems.forEach(item => {
@@ -98,19 +100,19 @@ colorPallette.forEach(color => {
             thirdColor = 'var(--color-creamy)';
         }else if (color.classList.contains('color-3')) {
             mainColor = 'var(--color-beach)';
-            primaryColor = 'var(--color-darkblue)';
-            secondaryColor = 'var(--color-blue)';
+            primaryColor = 'var(--color-blue)';
+            secondaryColor = 'var(--color-darkblue)';
             thirdColor = 'var(--color-pastel)';
         }else if (color.classList.contains('color-4')) {
             mainColor = 'var(--color-watermelon)';
-            primaryColor = 'var(--color-pinkw)';
+            primaryColor = 'var(--color-pinky)';
             secondaryColor = 'var(--color-greenw)';
-            thirdColor = 'var(--color-pinky)';
+            thirdColor = 'var(--color-pinkw)';
         }else if (color.classList.contains('color-5')) {
             mainColor = 'var(--color-city)';
             primaryColor = 'var(--color-bleu)';
-            secondaryColor = 'var(--color-yellow)';
-            thirdColor = 'var(--color-PINK)';
+            secondaryColor = 'var(--color-PINK)';
+            thirdColor = 'var(--color-yellow)';
         }    
         // Add more conditions for other colors/themes
 
@@ -122,10 +124,3 @@ colorPallette.forEach(color => {
         root.style.setProperty('--third-color', thirdColor);
     });
 });
-
-
-
-
-
-
-
