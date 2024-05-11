@@ -32,4 +32,3 @@ if($data["is_disposable_email"]["value"]== true){
 }
 echo "email address is valid";
 
-?>

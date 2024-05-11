@@ -5,10 +5,9 @@ require_once "functions.php";
 if(isset($_SESSION['unique_id'])){
     // Verificăm dacă contul este verificat sau nu
     $verified = check_verified(); // Ai deja o funcție `check_verified` implementată în `functions.php`?
-
     if(!$verified) {
         // Contul nu este verificat, redirecționăm utilizatorul către pagina de verificare
-        header("location: verify.php");
+        header("location: profile.php");
         exit();
     } else {
         // Contul este verificat, redirecționăm utilizatorul către pagina feed.html
@@ -37,7 +36,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if(!$verified) {
             // Contul nu este verificat, redirecționăm utilizatorul către pagina de verificare
-            header("location: verify.php");
+           // header("location: verify.php");
+           header("location: profile.php");
             exit();
         } else {
             // Contul este verificat, redirecționăm utilizatorul către pagina feed.html

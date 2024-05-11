@@ -192,23 +192,37 @@ function check_login($redirect = true) {
 	}
   }
 
-function check_verified(){
+// function check_verified(){
 	
-	$id = $_SESSION['USER']->user_id;
-	$query = "select * from users where user_id = '$id' limit 1";
-	$row = database_run($query);
+// 	$user_id = $_SESSION['USER']->user_id;
+// 	$query = "select * from users where user_id = '$user_id' limit 1";
+// 	$row = database_run($query);
 
-	if(is_array($row)){
-		$row = $row[0];
+// 	if(is_array($row)){
+// 		$row = $row[0];
 
-		if($row->email == $row->email_verificated){
+// 		if($row->email == $row->email_verificated){
 
-			return true;
-		}
-	}
+// 			return true;
+// 		}
+// 	}
  
-	return false;
+// 	return false;
  	
+// }
+
+
+function check_verified(){
+  // Verificăm dacă utilizatorul este autentificat și dacă profilul său este verificat
+  if(isset($_SESSION['USER']) && isset($_SESSION['LOGGED_IN'])){
+      // Verificăm dacă email-ul utilizatorului a fost verificat
+      if($_SESSION['USER']->email == $_SESSION['USER']->email_verified){
+          // Profilul este verificat
+          return true;
+      }
+  }
+  // Dacă nu este îndeplinită condiția de mai sus, returnăm false
+  return false;
 }
 
 
