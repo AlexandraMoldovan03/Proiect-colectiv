@@ -1,3 +1,7 @@
+:root {
+    --btn-padding: 0.6rem 2rem;
+    --border-radius: 2rem;
+}
 body {
     display: flex;
     align-items: center;
@@ -21,64 +25,55 @@ body::before {
     z-index: -1; /* Ensure the pseudo-element stays behind the content */
 }
 
-.form-container {
+.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-style: dashed ;
     border-width: 10px;
-    border-color: #F15E74;
+    border-color: hsl(81, 70%, 85%);
     border-radius: 20px;
-    background-color: black;
+    background-color: hsl(252, 30%, 17%);
     padding: 20px;
     margin: 20px;
+    color: hsl(40, 71%, 96%);
+    box-shadow: 0 0 100px #F15E74;
 }
 
-.form-message {
+.wrapper .sign {
     font-family: 'Lobster', sans-serif;;
-    font-size: 100px;
-    padding-top: 20px;
+    font-size: 50px;
+    padding-top: 5px;
     margin-bottom: 10px; 
     opacity: 1;
-    text-align: center; 
-    color: #F15E74;
-    text-shadow: 150px 150px 150px linear-gradient(90deg, #CCD7B7, #F39E75, #F15E74); /* Apply gradient as text shadow */
-    padding: 20px;
-    margin: 20px;
+    text-align: left; 
+    color: hsl(81, 70%, 85%);
+    text-shadow: 150px 150px 150px linear-gradient(90deg, hsl(81, 70%, 85%), #F39E75, #F15E74); /* Apply gradient as text shadow */
+    padding: 5px;
+    margin: 5px;
 }
 
-input[type="email"] {
+input[type="text"] {
     width: 400px; /* Set the width of the input fields */
     height: 50px; /* Set the height of the input fields */
     font-size: 24px; /* Set the font size of the input fields */
     margin-bottom: 10px; /* Add some spacing between input fields */
 }
 
-input[type="password"] {
-    width: 400px; /* Set the width of the input fields */
-    height: 50px; /* Set the height of the input fields */
-    font-size: 24px; /* Set the font size of the input fields */
-    margin-bottom: 10px; /* Add some spacing between input fields */
-}
-input[type="email"]:focus {
+input[type="text"]:focus {
     box-shadow: 0 0 100px #F39E75;
 }
 
-input[type="password"]:focus {
-    box-shadow: 0 0 100px #CCD7B7;
-}
-
-.signup-button {
-    width: auto; /* Allow the button to adjust its width based on the content */
-    height: 60px; /* Set the height of the button */
-    font-size: 20px; /* Adjust font size */
-    background-color: white; /* Set initial background color to white */
-    padding: 10px 20px; /* Add padding to the button */
-    border: none; /* Remove button border */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.5s ease-in-out; /* Apply transition effect to background-color */
-    border-radius: 30px; /* Make the button rounder */
+.wrapper .field-button {
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 0.9rem;
+    color:#F15E74;
 }
 
 
