@@ -1,114 +1,119 @@
-
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-image: url("assets/bg_imagine_proba.jpg"); /* Adjust the path to your image */
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url("assets/bg_imagine_proba.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 body::before {
-    content: ""; /* Required for pseudo-elements */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
-    z-index: -1; /* Ensure the pseudo-element stays behind the content */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .welcome-message {
-    font-size: 70px;
-    padding-top: 20px; /* Adjust the padding to move the text closer to the motto text */
-    margin-bottom: 10px; /* Reduce margin to bring the text closer to the motto text */
-    opacity: 1;
-    color: #F15E74;
-    text-align: center; /* Center-align the text */
-  }
-  
-  /* Center-align the InspireSphere text */
-  .welcome-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  /* Center-align the motto text */
-  .motto-message {
-    font-size: 45px;
-    padding-top: 25px;
-    margin-bottom: 20px;
-    opacity: 1;
-    color: white;
-    text-align: center; /* Center-align the text */
-  }
-  
-  .gradient-text {
-    background-image: linear-gradient(90deg, #CCD7B7, #F39E75, #F15E74);
-    background-clip: text;
-    color: transparent;
-  }
-  
-  .logo-image {
-    width: 600px;
-    height: auto;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeInLogo 2s ease-out forwards;
-  }
-  
-  .loading-bar {
-    width: 400px;
-    height: 40px;
-    background-color: rgba(48, 46, 46, 0.7);
-    border-radius: 600px;
-    position: relative;
+  font-size: 170px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+  opacity: 1;
+  color: #F15E74;
+  text-align: center;
+}
 
-  }
-  
-  .loading-bar::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 600px;
-    background: linear-gradient(90deg,#CCD7B7 0%, #F39E75 50%, #F15E74 100%);
-    position: absolute;
-    animation: loadingAnimation 3s infinite;
-  }
-  
-  @keyframes loadingAnimation {
-    0% {
+.motto-message {
+  font-size: 45px;
+  padding-top: 25px;
+  margin-bottom: 20px;
+  opacity: 1;
+  color: white;
+  text-align: center;
+}
+
+.gradient-text {
+  background-image: linear-gradient(90deg, #CCD7B7, #F39E75, #F15E74);
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-image {
+  width: 600px;
+  height: auto;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInLogo 2s ease-out forwards;
+}
+
+.loading-bar {
+  width: 400px;
+  height: 40px;
+  background-color: rgba(48, 46, 46, 0.7);
+  border-radius: 600px;
+  position: relative;
+}
+
+.loading-bar::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 600px;
+  background: linear-gradient(90deg,#CCD7B7 0%, #F39E75 50%, #F15E74 100%);
+  position: absolute;
+  animation: loadingAnimation 3s infinite;
+}
+
+@keyframes loadingAnimation {
+  0% {
       width: 0%;
-    }
-    50% {
+  }
+  50% {
       width: 50%;
-    }
-    100% {
+  }
+  100% {
       width: 100%;
-    }
   }
-  
-  .buttons-container button {
-    font-size: 25px;
-    background-color: #F39E75;
-    color: white;
-    padding: 20px;
-    margin: 20px;
-    margin-top: 60px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .buttons-container button:active {
-    background-color: #F15E74;
-    transform: translateX(3px);
-  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-wrap: wrap; /* Allow wrapping to prevent buttons from overlapping */
+}
+
+.buttons-container button {
+  background-color: white;
+  border: 2px solid #F15E74;
+  color: black;
+  border-radius: 8px;
+  padding: 20px 40px; /* Increase the padding for larger buttons */
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px; /* Increase the font size for larger buttons */
+  margin: 10px; /* Adjust spacing between buttons */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.buttons-container button:hover {
+  background-color: #F15E74;
+  color: white;
+}
