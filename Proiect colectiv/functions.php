@@ -125,34 +125,39 @@ function login($data)
   return $errors;
 }
 
-function database_run($query,$vars = array())
+function database_run($query, $vars = array())
 {
-	$string = "mysql:host=localhost;dbname=inspiresphere";
-	$con = new PDO($string,'root','');
+    try {
+        $string = "mysql:host=localhost;dbname=inspiresphere";
+        $con = new PDO($string, 'root', '');
 
-	echo "SQL Query: $query <br>";
-    echo "Bound Variables: ";
-    var_dump($vars);
-    
+        if (!$con) {
+            return false;
+        }
 
-	if(!$con){
-		return false;
-	}
+        echo "SQL Query: $query <br>";
+        echo "Bound Variables: ";
+        var_dump($vars);
 
-	$stm = $con->prepare($query);
-	$check = $stm->execute($vars);
+        $stm = $con->prepare($query);
+        $check = $stm->execute($vars);
 
-	if($check){
-		
-		$data = $stm->fetchAll(PDO::FETCH_OBJ);
-		
-		if(count($data) > 0){
-			return $data;
-		}
-	}
+        if ($check) {
 
-	return false;
+            $data = $stm->fetchAll(PDO::FETCH_OBJ);
+
+            if (count($data) > 0) {
+                return $data;
+            }
+        }
+
+        return false;
+    } catch (PDOException $e) {
+        echo "Error connecting to database: " . $e->getMessage();
+        return false;
+    }
 }
+
 
 // function check_login($redirect = true){
 
