@@ -77,6 +77,9 @@ input[type="text"]:focus {
     box-shadow: 0 0 100px #F39E75;
 }
 
+input[type="password"]:focus {
+    box-shadow: 0 0 100px #F39E75;
+}
 .wrapper .field-button {
     display: inline-block;
     padding: var(--btn-padding);

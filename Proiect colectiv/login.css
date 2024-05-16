@@ -54,6 +54,10 @@ body::before {
     margin: 5px;
 }
 
+.wrapper .field button{
+    background-color: #F15E74;
+}
+
 input[type="text"] {
     width: 400px; /* Set the width of the input fields */
     height: 50px; /* Set the height of the input fields */
@@ -62,26 +66,18 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    box-shadow: 0 0 100px #F39E75;
+    box-shadow: 0 0 100px #F15E74;
 }
 
-.wrapper .field-button {
-    display: inline-block;
-    padding: var(--btn-padding);
-    font-weight: 500;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: all 300ms ease;
-    font-size: 0.9rem;
-    color:#F15E74;
+input[type="password"] {
+    width: 400px; /* Set the width of the input fields */
+    height: 50px; /* Set the height of the input fields */
+    font-size: 24px; /* Set the font size of the input fields */
+    margin-bottom: 10px; /* Add some spacing between input fields */
 }
 
-
-
-/* Define the hover effect for the sign-up button */
-.signup-button:hover {
-    background-image: linear-gradient(90deg, #CCD7B7, #F39E75, #F15E74); /* Change gradient background on hover */
-    background-color: transparent; /* Set background color to transparent on hover */
+input[type="password"]:focus {
+    box-shadow: 0 0 100px #F15E74;
 }
 
 @font-face {
