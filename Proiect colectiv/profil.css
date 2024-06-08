@@ -14,7 +14,7 @@
     --color-purpler: hsl(241, 69%, 76%);
     --color-blue: hsl(220, 97%, 70%);
     --color-darkblue: hsl(242, 58%, 49%);
-    --color-pastel: hsl(41, 75%, 96%);
+    --color-pastel: hsl(190, 100%, 77%);
     --color-greenw: hsl(141, 36%, 55%);
     --color-pinkw: hsl(351, 84%, 66%);
     --color-pinky: hsl(352, 100% , 85%);
@@ -52,6 +52,15 @@ body {
     box-shadow: 0 0 20px rgba(var(--secondary-color), 0.1);
 }
 
+.search-bar {
+    background: var(--color-dark);
+    border-radius: var(--border-radius);
+    padding: var(--search-padding);
+    color: var(--color-cream);
+    font-style:italic;
+    border-color: var(--secondary-color);
+}
+
 .header {
     background: var(--main-color);
     color: var(--color-dark);
@@ -59,6 +68,25 @@ body {
     border-radius: 20px 20px 0 0;
     text-align: center;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.back-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px; /* Adjust the left value as needed */
+    transform: translateY(-50%);
+    color: var(--color-dark); /* Use the secondary color */
+    text-decoration: none;
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+.back-icon:hover {
+    color: var(--primary-color); /* Change color on hover */
+}
+
+.back-icon i {
+    font-size: inherit; /* Inherit font size from parent */
 }
 
 .header h1 {
@@ -106,6 +134,30 @@ body {
     background: var(--secondary-color);
 }
 
+.profileForm {
+    background: var(--primary-color);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.editProfileForm{
+    display:inline-block;
+    align-self: center;
+    color: var(--third-color);
+}
+
+.editProfileForm .edit-profile button{
+    background: var(--third-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
 .posts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -119,6 +171,9 @@ body {
     overflow: hidden;
     position: relative;
     transition: transform 0.3s;
+    border-style: dashed;
+    border-color: var(--secondary-color);
+    border-width: 0.5rem;
 }
 
 .post:hover {
@@ -139,33 +194,4 @@ body {
 .post-content p {
     margin: 0;
     color: #333;
-}
-
-.add-post {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.add-post input[type="text"] {
-    padding: 10px;
-    width: calc(100% - 100px);
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    outline: none;
-}
-
-.add-post button {
-    background: var(--third-color);
-    color: var(--color-dark);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-    margin-top: 0.5rem;
-}
-
-.add-post button:hover {
-    background: var(--secondary-color);
 }

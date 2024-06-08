@@ -1,0 +1,146 @@
+:root {
+    --main-color: var(--color-gradient);
+    --primary-color: var(--color-orange);
+    --secondary-color: var(--color-pink);
+    --third-color: var(--color-green);
+
+    --color-dark: hsl(252, 30%, 17%);
+    --color-cream: hsl(40, 71%, 96%);
+    --color-green: hsl(81, 70%, 85%);
+    --color-pink: hsl(351, 84%, 66%);
+    --color-orange: hsl(15, 96%, 81%);
+    --color-purple: hsl(246, 100%, 88%);
+    --color-creamy: hsl(0, 100%, 96%);
+    --color-purpler: hsl(241, 69%, 76%);
+    --color-blue: hsl(220, 97%, 70%);
+    --color-darkblue: hsl(242, 58%, 49%);
+    --color-pastel: hsl(190, 100%, 77%);
+    --color-greenw: hsl(141, 36%, 55%);
+    --color-pinkw: hsl(351, 84%, 66%);
+    --color-pinky: hsl(352, 100% , 85%);
+    --color-yellow: hsl(52, 97%, 49%);
+    --color-PINK: hsl(311, 94%, 74%);
+    --color-bleu: hsl(254, 49%, 54%);
+    --color-gradient: linear-gradient(90deg, var(--color-green), var(--color-orange), var(--color-pink));
+    --color-lavander: linear-gradient(90deg, var(--color-purpler), var(--color-purple), var(--color-creamy));
+    --color-beach: linear-gradient(90deg, var(--color-darkblue), var(--color-blue), var(--color-pastel));
+    --color-watermelon: linear-gradient(90deg, var(--color-greenw), var(--color-pinky), var(--color-pinkw));
+    --color-city: linear-gradient(90deg, var(--color-yellow), var(--color-PINK), var(--color-bleu));
+    --border-radius: 2rem;
+    --border-radius: 2rem;
+    --card-border-radius: 1rem;
+    --btn-padding: 0.6rem 1rem;
+    --search-padding: 0.6rem 1rem;
+    --card-padding: 1rem;
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
+}
+
+/* Stilurile pentru cercul de chat */
+.chat-circle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: var(--color-cream);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    z-index: 9999;
+    border: 7px solid var(--color-dark);
+}
+
+/* Stilurile pentru caseta de chat */
+.chat-box {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    width: 300px;
+    height: 400px; /* Înălțime mai mare pentru a încăpea mai mult conținut */
+    background-color: var(--color-cream);
+    border-style: dashed;
+    border-width: 10px;
+    border-color: var(--secondary-color);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9998;
+    overflow-y: auto; /* Adăugăm scrollbar atunci când conținutul depășește înălțimea */
+}
+
+
+/* Stilurile pentru antetul casetei de chat */
+.chat-box-header {
+        background: var(--main-color);
+        color: var(--color-dark);
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 20px;
+        position: relative;
+}
+
+/* Stilurile pentru butonul de închidere */
+.close-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute; /* Poziție absolută pentru a fi plasat în partea dreaptă a antetului */
+    top: 3%; /* Ajustăm poziția verticală */
+    right: 3%; /* Ajustăm poziția orizontală */
+    transform: translateY(-50%); /* Centrăm vertical butonul */
+    color: var(--color-dark);
+}
+
+/* Stilurile pentru corpul casetei de chat */
+.chat-box-body {
+    max-height: 70rem;
+    overflow-y: auto;
+    padding: 10px;
+    color: var(--color-dark);
+    
+}
+
+.wrapper{
+    color: var(--color-dark);
+}
+
+/* Stilurile pentru câmpul de scriere și butonul de trimitere */
+.typing-field {
+    padding: 10px;
+    border-top: 1px solid var(--secondary-color);
+    position: absolute; /* Poziție absolută pentru a fi plasat în partea de jos a casetei de chat */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.input-data {
+    display: flex;
+    align-items: center;
+}
+
+.input-data input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.input-data button {
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--color-cream);
+    cursor: pointer;
+}

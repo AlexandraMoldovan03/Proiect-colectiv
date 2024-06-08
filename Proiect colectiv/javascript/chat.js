@@ -3,6 +3,22 @@ incoming_id = form.querySelector(".incoming_id").value,
 inputField = form.querySelector(".input-field"),
 sendBtn = form.querySelector("button"),
 chatBox = document.querySelector(".chat-box");
+const root = document.querySelector(':root'); // Add this line to access root variables
+
+// Retrieve theme colors from localStorage
+const mainColor = localStorage.getItem('mainColor');
+const primaryColor = localStorage.getItem('primaryColor');
+const secondaryColor = localStorage.getItem('secondaryColor');
+const thirdColor = localStorage.getItem('thirdColor');
+
+// Apply theme colors to root variables if retrieved from localStorage
+if (mainColor && primaryColor && secondaryColor && thirdColor) {
+    root.style.setProperty('--main-color', mainColor);
+    root.style.setProperty('--primary-color', primaryColor);
+    root.style.setProperty('--secondary-color', secondaryColor);
+    root.style.setProperty('--third-color', thirdColor);
+}
+
 
 form.onsubmit = (e)=>{
     e.preventDefault();

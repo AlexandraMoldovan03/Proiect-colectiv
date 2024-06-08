@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (profileLink) {
         profileLink.addEventListener('click', function (event) {
             event.preventDefault();
-            window.location.href = 'profil.html';
+            window.location.href = 'profil.php';
         });
     }
 
@@ -187,5 +187,114 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please enter something to post.');
         }
     });
+
+    const searchBar = document.getElementById('search-bar');
+    const feedsContainer = document.querySelector('.feeds');
+
+    searchBar.addEventListener('input', function() {
+        const searchTerm = searchBar.value.trim().toLowerCase();
+        const feedItems = feedsContainer.querySelectorAll('.feed');
+
+        feedItems.forEach(function(feedItem) {
+            const postText = feedItem.querySelector('p').textContent.toLowerCase();
+            const starTags = feedItem.querySelectorAll('.hashtag');
+            let hasStarTag = false;
+
+            starTags.forEach(function(tag) {
+                if (tag.textContent.toLowerCase().includes(searchTerm)) {
+                    hasStarTag = true;
+                }
+            });
+
+            if (postText.includes(searchTerm) || hasStarTag) {
+                feedsContainer.prepend(feedItem);
+            } else {
+                feedsContainer.appendChild(feedItem);
+            }
+        });
+    });
+
+    // Selectăm toate butoanele de like
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    // Iterăm prin fiecare buton și adăugăm un event listener
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const postId = this.dataset.postId; // ID-ul postării
+            const likeCountSpan = this.nextElementSibling; // Elementul care afișează numărul de like-uri
+
+            // Trimitem o cerere către server pentru a adăuga/elimina like
+            fetch('like.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ postId: postId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Actualizăm numărul de like-uri afișat
+                likeCountSpan.textContent = data.likeCount;
+
+                // Verificăm dacă utilizatorul a dat like la postarea curentă
+                if (likedPosts.includes(postId)) {
+                    // Adăugăm clasa 'liked' butonului de like curent pentru a schimba culoarea în roz
+                    this.classList.add('liked');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+
+    likeButtons.forEach(button => {
+        const postId = button.dataset.postId;
+        if (likedPosts.includes(postId)) {
+            button.classList.add('liked');
+        }
+    });
+
+    // Chat functionality
+    const chatIcon = document.querySelector('.chat-icon');
+    const chatWindow = document.querySelector('.chat-window');
+    const closeChatBtn = document.querySelector('.close-chat');
+    const sendMessageForm = document.querySelector('.send-message-form');
+    const chatInput = document.querySelector('.chat-input');
+    const chatMessages = document.querySelector('.chat-messages');
+
+    chatIcon.addEventListener('click', () => {
+        chatWindow.style.display = 'block';
+    });
+
+    closeChatBtn.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
+    });
+
+    sendMessageForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const message = chatInput.value.trim();
+
+        if (message !== '') {
+            let newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.innerHTML = `<p>${message}</p>`;
+            chatMessages.appendChild(newMessage);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const postAuthors = document.querySelectorAll('.feed h2');
+
+    postAuthors.forEach(author => {
+        author.addEventListener('click', function() {
+            const authorName = this.textContent.trim();
+            // Obține ID-ul utilizatorului dintr-un atribut de date al elementului <h2>
+            const userId = this.getAttribute('data-user-id');
+            // Redirecționează utilizatorul către pagina de profil cu ID-ul utilizatorului ca parametru
+            window.location.href = 'profile.php?userId=' + userId;
+        });
+    });
+});
+
 

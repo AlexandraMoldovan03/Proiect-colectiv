@@ -1,146 +1,101 @@
 <?php
-require "functions.php";
-//check_login();
-$isLogged = isset($_SESSION['email_verified']);
+session_start();
+include_once "db_config.php";
+
+if (!isset($_GET['userId'])) {
+    // Dacă nu este furnizat ID-ul utilizatorului, redirecționează utilizatorul către o pagină de eroare sau altă pagină relevantă
+    header("Location: error.php");
+    exit();
+}
+
+// Obține ID-ul utilizatorului din parametrul URL
+$userId = $_GET['userId'];
+
+// Interoghează baza de date pentru a obține informațiile utilizatorului cu ID-ul specificat
+$user_query = mysqli_query($con, "SELECT * FROM users WHERE unique_id = '$userId'");
+if(mysqli_num_rows($user_query) > 0) {
+    $user_row = mysqli_fetch_assoc($user_query);
+    // Afișează informațiile utilizatorului
+    // Restul codului pentru afișarea profilului utilizatorului...
+    
+    // Interogare pentru a obține postările utilizatorului
+    $posts_query = mysqli_query($con, "SELECT * FROM posts WHERE user_id = '$userId' ORDER BY created_at DESC");
+    if(mysqli_num_rows($posts_query) > 0) {
+        // Afisează postările utilizatorului
+        while($post = mysqli_fetch_assoc($posts_query)) {
+            // Afisează fiecare postare
+            // ...
+        }
+    } else {
+        echo "No posts found";
+    }
+} else {
+    // Dacă nu există un utilizator cu ID-ul specificat, poți afișa un mesaj de eroare sau redirecționa utilizatorul către o altă pagină relevantă
+    echo "User profile not found";
+}
 ?>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;1,200;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" >
-
-    <title>Booking System</title>
-    
-   
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
- 
-        </head>
-
-    
-
-    <body>
-
-  
-
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar {
-            background-color: #2ec1ac;
-            padding: 10px;
-            color: white;
-        }
-
-        .navbar-brand {
-            color: black;
-        }
-
-        h1 {
-            color: #2ec1ac;
-            margin: 20px 0;
-        }
-
-        .table-container {
-            margin-top: 20px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        table, th, td {
-            border: 1px solid #dee2e6;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #2ec1ac;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-    </style>
-    <title>Profile</title>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profil.css">
 </head>
 <body>
-
-
-<h1>Profile</h1>
-
-<?php if(check_login(false)): ?>
-    Hi, <?=$_SESSION['USER']->username;?>;
-
-    <br><br>
-
-    <?php if(check_verified()): ?>
-        <!-- Display user bookings -->
-        <?php
-        $connect = mysqli_connect('localhost', 'root', '', 'tennis');
-        if (!$connect) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
-        $bookingsQuery = "SELECT name, email, date, timeslot FROM bookings WHERE email = ?";
-        $stmtBookings = mysqli_prepare($connect, $bookingsQuery);
-        mysqli_stmt_bind_param($stmtBookings, "s", $_SESSION['USER']->email);
-        mysqli_stmt_execute($stmtBookings);
-        $bookingsResult = mysqli_stmt_get_result($stmtBookings);
+    <div class="container">
+    <?php 
+        // Verifică dacă este furnizat un ID de utilizator în parametrul URL
+        if(isset($_GET['userId'])) {
+            // Obține ID-ul utilizatorului din parametrul URL
+            $user_id = $_GET['userId'];
+            // Interoghează baza de date pentru a obține informațiile utilizatorului cu ID-ul specificat
+            $sql = mysqli_query($con, "SELECT * FROM users WHERE unique_id = '$user_id'");
+            if(mysqli_num_rows($sql) > 0){
+                $row = mysqli_fetch_assoc($sql);
+    ?>
+        <div class="header">
+            <a href="feed.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <h1><?php echo htmlspecialchars($row['fname']). " " . htmlspecialchars($row['lname']) ?>'s Profile</h1>
+        </div>
+        <div class="profile">
+            <img src="php/images/<?php echo htmlspecialchars($row['img']); ?>" alt="">
+            <h2><?php echo htmlspecialchars($row['fname']). " " . htmlspecialchars($row['lname']) ?></h2>
+            <p>Email: <?php echo htmlspecialchars($row['email']) ?></p>
+            <p>About me: <?php echo htmlspecialchars($row['about_me']) ?></p>
+        </div>
+        <h2>Posts</h2>
+        <div class="posts">
+        <?php 
+            // Interoghează baza de date pentru a obține postările utilizatorului cu ID-ul specificat
+            $posts_query = mysqli_query($con, "SELECT * FROM posts WHERE user_id = '$user_id' ORDER BY created_at DESC");
+            while($post = mysqli_fetch_assoc($posts_query)) {
+                echo '<div class="post">';
+                // Verifică dacă există o imagine pentru postare și afișează-o
+                if (!empty($post['post_image'])) {
+                    echo "<img src='uploads/{$post['post_image']}' alt='Post Image'>";
+                } else {
+                    echo '<img src="post-placeholder.jpg" alt="New Post">';
+                }
+                // Afișează textul postării
+                echo '<div class="post-content"><p>' . htmlspecialchars($post['post_text']) . '</p></div>';
+                echo '</div>';
+            }
         ?>
-
-        <?php if ($bookingsResult && mysqli_num_rows($bookingsResult) > 0): ?>
-            <div class="table-container">
-                <p>Your bookings:</p>
-                <table>
-                    <tr><th>Name</th><th>Email</th><th>Date</th><th>Timeslot</th></tr>
-
-                    <?php while ($record = mysqli_fetch_assoc($bookingsResult)): ?>
-                        <tr>
-                            <td><?= $record['name']; ?></td>
-                            <td><?= $record['email']; ?></td>
-                            <td><?= $record['date']; ?></td>
-                            <td><?= $record['timeslot']; ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-
-                </table>
-            </div>
-        <?php else: ?>
-            <p>No bookings found.</p>
-        <?php endif; ?>
-
-        <?php mysqli_free_result($bookingsResult); ?>
-
-    <?php else: ?>
-        <a href="verify.php">
-            <button>Verify Profile</button>
-        </a>
-    <?php endif; ?>
-
-<?php endif; ?>
-<br><br><br>
+        </div>
+    <?php
+            } else {
+                // Afisează un mesaj de eroare dacă nu este găsit un utilizator cu ID-ul specificat
+                echo "User profile not found.";
+            }
+        } else {
+            // Afisează un mesaj de eroare dacă nu este furnizat un ID de utilizator în parametrul URL
+            echo "User ID not provided.";
+        }
+    ?>
+    </div>
+    <script src="./profil.js"></script>
 </body>
 </html>
+

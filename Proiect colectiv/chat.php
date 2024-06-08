@@ -7,6 +7,7 @@
 ?>
 <?php include_once "header.php"; ?>
 <body>
+<link rel="stylesheet" href="chat.css">
   <div class="wrapper">
     <section class="chat-area">
       <header>
@@ -22,7 +23,7 @@
         <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
         <img src="php/images/<?php echo $row['img']; ?>" alt="">
         <div class="details">
-          <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
+          <span><b><?php echo $row['fname']. " " . $row['lname'] ?></b></span>
           <p><?php echo $row['status']; ?></p>
         </div>
       </header>

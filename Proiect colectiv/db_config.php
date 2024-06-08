@@ -1,12 +1,11 @@
 <?php
+  $hostname = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "inspiresphere";
 
-	$hname = 'localhost';
-	$uname = 'root';
-	$pass = '';
-	$db = 'inspireshere';
-
-	$con = mysqli_connect($hname,$uname,$pass,$db);
-
-	if(!$con){
-		die("Cannot Connect to Database".myaqli_connect_error());
-	}
+  $con = mysqli_connect($hostname, $username, $password, $dbname);
+  if(!$con){
+    echo "Database connection error".mysqli_connect_error();
+  }
+?>

@@ -1,55 +1,50 @@
-<?php  
-
-require "functions.php";
-
-$errors = array();
-
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
-
-	$errors = signup($_POST);
-
-	if(count($errors) == 0)
-	{
-		header("Location: login.php");
-		die;
-	}
-}
-
+<?php 
+  session_start();
+  if(isset($_SESSION['unique_id'])){
+    header("location: users.php");
+  }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link rel="stylesheet" href="signup.css">
-</head>
+<?php include_once "header.php"; ?>
 <body>
-
-    <!-- Include navbar.php if needed -->
-    <!-- <?php //include('navbar.php')?> -->
-
-    <div class="form-container">
-    <h1 class="form-message" >Sign up</h1>
-
-        <div>
-            <?php if(count($errors) > 0):?>
-                <?php foreach ($errors as $error):?>
-                    <?= $error?> <br>    
-                <?php endforeach;?>
-            <?php endif;?>
+  <div class="wrapper">
+    <section class="form signup">
+      <header>SignUp</header>
+      <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <div class="error-text"></div>
+        <div class="name-details">
+          <div class="field input">
+            <label>First Name</label>
+            <input type="text" name="fname" placeholder="First name" required>
+          </div>
+          <div class="field input">
+            <label>Last Name</label>
+            <input type="text" name="lname" placeholder="Last name" required>
+          </div>
         </div>
-        <form method="post">
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="text" name="email" placeholder="Email"><br>
-            <input type="text" name="password" placeholder="Password"><br>
-            <input type="text" name="password2" placeholder="Retype Password"><br>
-            <br>
-            <input type="submit" value="Sign up" class="signup-button"> 
-			<input type="button" value="Already have an account?" class="signup-button" onclick="window.location.href = 'login.php';">      
-        </form>
-    </div>
+        <div class="field input">
+          <label>Email Address</label>
+          <input type="text" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="field input">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Enter new password" required>
+          <i class="fas fa-eye"></i>
+        </div>
+        <div class="field image">
+          <label>Select Image</label>
+          <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+        </div>
+        <div class="field button">
+          <input type="submit" name="submit" value="Continue to Chat">
+        </div>
+      </form>
+      <div class="link">Already signed up? <a href="login.php">Login now</a></div>
+    </section>
+  </div>
+
+  <script src="javascript/pass-show-hide.js"></script>
+  <script src="javascript/signup.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>

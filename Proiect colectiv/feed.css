@@ -10,11 +10,11 @@
     --color-pink: hsl(351, 84%, 66%);
     --color-orange: hsl(15, 96%, 81%);
     --color-purple: hsl(246, 100%, 88%);
-    --color-creamy: hsl(0, 100%, 96%);
+    --color-creamy: hsl(0, 50%, 86%);
     --color-purpler: hsl(241, 69%, 76%);
     --color-blue: hsl(220, 97%, 70%);
     --color-darkblue: hsl(242, 58%, 49%);
-    --color-pastel: hsl(41, 75%, 96%);
+    --color-pastel: hsl(190, 100%, 77%);
     --color-greenw: hsl(141, 36%, 55%);
     --color-pinkw: hsl(351, 84%, 66%);
     --color-pinky: hsl(352, 100% , 85%);
@@ -25,7 +25,7 @@
     --color-lavander: linear-gradient(90deg, var(--color-purpler), var(--color-purple), var(--color-creamy));
     --color-beach: linear-gradient(90deg, var(--color-darkblue), var(--color-blue), var(--color-pastel));
     --color-watermelon: linear-gradient(90deg, var(--color-greenw), var(--color-pinky), var(--color-pinkw));
-    --color-city: linear-gradient(90deg, var(--color-bleu), var(--color-PINK), var(--color-yellow));
+    --color-city: linear-gradient(90deg, var(--color-PINK), var(--color-PINK), var(--color-yellow));
     --border-radius: 2rem;
     --border-radius: 2rem;
     --card-border-radius: 1rem;
@@ -256,19 +256,27 @@ main .container .left .profile {
     align-items: center;
     justify-content: space-between;
     padding-left: 1rem;
-    background: var(--color-cream);
+    background: var(--main-color);
+    color: var(--secondary-color);
     padding: 0.4rem var(--card-padding);
     border-radius: var(--border-radius);
     margin-top: 1rem;
 }
 
-.middle .create-post input[type="text"] {
-    justify-self: start;
-    width: 100%;
-    padding-left: 1rem;
-    background: transparent;
-    color: var(--color-cream);
-    margin-right: 1rem;
+.middle .create-post .email{
+    color:var(--third-color);
+}
+
+.middle .create-post .butn {
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-weight: bold; /* Textul îngroșat */
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 1rem; /* Textul mai mare */
+    background: var(--third-color);
+    color: var(--secondary-color);
 }
 
 .middle .feeds .feed{
@@ -279,6 +287,62 @@ main .container .left .profile {
     font-size: 0.85rem;
     line-height: 1.5;
     color: var(--color-dark);
+}
+
+.middle .feeds .like-btn{
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 0.9rem;
+    background: var(--secondary-color);
+    color: var(--color-cream);
+}
+.like-btn:hover {
+    opacity: 0.6;
+}
+
+.like-btn.liked i {
+    color: red; /* Schimbăm culoarea iconiței inimii în roz */
+}
+
+.middle .feeds .com-btn{
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 0.9rem;
+    background: var(--third-color);
+    color: var(--color-dark);
+}
+.com-btn:hover {
+    opacity: 0.6;
+}
+
+.hash-container {
+    margin-top: 0.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.hashtags {
+    font-weight: bold;
+    font-size: 0.9rem; /* Reducem dimensiunea fontului */
+    color: var(--color-dark);
+    margin-bottom: 0.25rem; /* Reducem spațiul de jos */
+}
+
+.hashtag {
+    padding: 5px 10px; /* Reducem padding-ul */
+    border-radius: 20px; /* Reducem raza borderului */
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--color-cream);
+    font-size: 0.8rem; /* Reducem dimensiunea fontului */
+    margin-right: 5px; /* Adăugăm puțin spațiu între tag-uri */
 }
 
 .middle .feed .head{
@@ -319,6 +383,14 @@ main .container .left .profile {
     margin-left: -0.6rem;
 }
 
+.like-icon i {
+    color: #ff69b4; /* Pink color */
+}
+
+.like-icon.liked i {
+    color: #ff69b4; /* Pink color */
+}
+
 .middle .liked-by span:first-child{
     margin: 0;
 }
@@ -327,113 +399,52 @@ main .container .left .profile {
     margin-left: 0.5rem;
 }
 
-main .container .right{
+.right {
     height: max-content;
     position: sticky;
     top: var(--sticky-top-right);
     bottom: 0;
 }
 
-.right .messages{
+.tags-ranking {
     background: var(--primary-color);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 }
 
-.right .messages .heading{
+.tags-ranking .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Schimbăm de la 'space-between' la 'center' */
+    margin-bottom: 1rem;
+}
+
+.tags-ranking .heading h4 {
+    color: var(--secondary-color);
+    /* Eliminăm 'align-self: center;' */
+    text-align: center; /* Adăugăm această proprietate pentru a centra textul */
+}
+.tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.tag {
+    background: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--card-border-radius);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
 }
 
-.right .messages .search-bar{
-    display: flex;
-    margin-bottom: 1rem;
+.tag span {
+    color: var(--color-cream);
 }
 
-.right .messages .category{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.right .messages .category .h6{
-    width: 100%;
-    text-align: center;
-    border-bottom: 4px solid var(--third-color);
-    padding-bottom: 0.5rem;
-    font-size: 0.85rem;
-}
-
-.right .messages .category .active{
-    border-color: var(--color-dark);
-}
-
-.right .messages .message-requests{
-    color: var(--secondary-color);
-}
-
-.right .messages .message{
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    align-items: start;
-}
-
-.right .messages .profile-photo{
-    position: relative;
-    overflow: visible;
-}
-
-.right .profile-photo img{
-    border-radius: 50%;
-}
-
-.right .messages .message:last-child{
-    margin: 0;
-}
-
-.right .messages .message p{
-    font-size: 0.8rem;
-}
-
-.right .messages .message .profile-photo .active{
-    width: 0.8rem;
-    height: 0.8rem;
-    border-radius: 50%;
-    border: 3px solid var(--secondary-color);
-    background: var(--third-color);
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-.right .friend-requests{
-    margin-top: 1rem;
-}
-
-.right .friend-requests h4{
-    color: var(--secondary-color);
-    margin: 1rem 0;
-}
-
-.right .request{
-    background: var(--primary-color);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-bottom: 0.7rem;
-}
-
-.right .request .info{
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.right .request .action{
-    display: flex;
-    gap: 1rem;
+.tag .post-count {
+    font-weight: bold;
 }
 
 .customize-theme{
